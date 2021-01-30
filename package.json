@@ -1,0 +1,16 @@
+{
+  "name": "transip-api",
+  "version": "1.0.0",
+  "description": "A Node.js wrapper for the TransIP API and authentication class",
+  "keywords": ["transip", "api"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IFMSA-NL/transip-api.git"
+  },
+  "main": "index.js",
+  "author": "IFMSA-NL",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}

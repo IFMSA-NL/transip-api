@@ -223,14 +223,67 @@ A "request body"-object must always be the last parameter of a method. For conte
 | `list()`          | tags       |                                                                                                                                        |
 | `get()`           | vpsName    |                                                                                                                                        |
 | `order()`         |            | { productName, addons, availabilityZone, description, operatingSystem,installFlavour, hostname, username, sshKeys, base64InstallText } |
-| `orderMultiple()` |            | { vpsName, contacts, nameservers, dnsEntries }                                                                                         |
-| `clone()`         |            | { authCode, vpsName, contacts, nameservers, dnsEntries }                                                                               |
-| `update()`        | vpsName    | { domain }                                                                                                                             |
+| `orderMultiple()` |            | { vpss }                                                                                                                               |
+| `clone()`         |            | { vpsName, availabilityZone }                                                                                                          |
+| `update()`        | vpsName    | { vps }                                                                                                                                |
 | `start()`         | vpsName    |                                                                                                                                        |
 | `stop()`          | vpsName    |                                                                                                                                        |
 | `reset()`         | vpsName    |                                                                                                                                        |
-| `handover()`      | vpsName    |                                                                                                                                        |
+| `handover()`      | vpsName    | { targetCustomerName }                                                                                                                 |
 | `cancel()`        | vpsName    | { endTime }                                                                                                                            |
+| `usage()`         | vpsName    | { types, dateTimeStart, dateTimeEnd }                                                                                                  |
+
+#### `vps.vnc`
+
+| method              | parameters | request body |
+| ------------------- | ---------- | ------------ |
+| `get()`             | vpsName    |              |
+| `regenerateToken()` | vpsName    |              |
+
+#### `vps.addons`
+
+| method     | parameters         | request body |
+| ---------- | ------------------ | ------------ |
+| `list()`   | vpsName            |              |
+| `order()`  | vpsName            | { addons }   |
+| `cancel()` | vpsName, addonName |              |
+
+#### `vps.licenses`
+
+| method     | parameters         | request body              |
+| ---------- | ------------------ | ------------------------- |
+| `list()`   | vpsName            |                           |
+| `order()`  | vpsName            | { licenseName, quantity } |
+| `update()` | vpsName, licenseId | { newLicenseName }        |
+| `cancel()` | vpsName, licenseId |                           |
+
+#### `vps.upgrades`
+
+| method    | parameters | request body    |
+| --------- | ---------- | --------------- |
+| `list()`  | vpsName    |                 |
+| `order()` | vpsName    | { productName } |
+
+#### `vps.os`
+
+| method      | parameters | request body                                                                            |
+| ----------- | ---------- | --------------------------------------------------------------------------------------- |
+| `list()`    | vpsName    |                                                                                         |
+| `install()` | vpsName    | { operatingSystemName, hostname, installFlavour, username, sshKeys, base64InstallText } |
+
+#### `vps.ip`
+
+| method               | parameters         | request body         |
+| -------------------- | ------------------ | -------------------- |
+| `list()`             | vpsName            |                      |
+| `get()`              | vpsName, ipAddress |                      |
+| `add()`              | vpsName, ipAddress |                      |
+| `updateReverseDns()` | vpsName, ipAddress | { ipAddressOptions } |
+| `delete()`           | vpsName, ipAddress |                      |
+
+> Please note: to avoid clashes in variable name, the request body of `updateReverseDns()` uses `ipAddressOptions` instead of `ipAddress`!
+
+> WIP!
 
 ## Dependencies
 

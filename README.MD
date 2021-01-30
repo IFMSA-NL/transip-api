@@ -113,6 +113,11 @@ await api.query("https://api.transip.nl/v6/domains?page=1&pageSize=0");
 
 A "request body"-object must always be the last parameter of a method. For contents of the request body, [see the API docs](ttps://api.transip.nl/rest/docs.html).
 
+| method    | parameters | request body |
+| --------- | ---------- | ------------ |
+| `test()`  |            |              |
+| `query()` | URL        |              |
+
 ### `availabilityZones`
 
 | method   | parameters | request body |

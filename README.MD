@@ -216,6 +216,22 @@ A "request body"-object must always be the last parameter of a method. For conte
 | `list()` |            |              |
 | `get()`  | tld        |              |
 
+### `vps`
+
+| method            | parameters | request body                                                                                                                           |
+| ----------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `list()`          | tags       |                                                                                                                                        |
+| `get()`           | vpsName    |                                                                                                                                        |
+| `order()`         |            | { productName, addons, availabilityZone, description, operatingSystem,installFlavour, hostname, username, sshKeys, base64InstallText } |
+| `orderMultiple()` |            | { vpsName, contacts, nameservers, dnsEntries }                                                                                         |
+| `clone()`         |            | { authCode, vpsName, contacts, nameservers, dnsEntries }                                                                               |
+| `update()`        | vpsName    | { domain }                                                                                                                             |
+| `start()`         | vpsName    |                                                                                                                                        |
+| `stop()`          | vpsName    |                                                                                                                                        |
+| `reset()`         | vpsName    |                                                                                                                                        |
+| `handover()`      | vpsName    |                                                                                                                                        |
+| `cancel()`        | vpsName    | { endTime }                                                                                                                            |
+
 ## Dependencies
 
 The only external dependency is `node-fetch`. The `crypto` class, native to node, is used as well.

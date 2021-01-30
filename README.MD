@@ -109,6 +109,82 @@ The TransIP API supports pagination, but this wrapper does not implement this by
 await api.query("https://api.transip.nl/v6/domains?page=1&pageSize=0");
 ```
 
+## API
+
+A "request body"-object must always be the last parameter of a method. For contents of the request body, [see the API docs](ttps://api.transip.nl/rest/docs.html).
+
+> WIP!
+
+### `availabilityZones`
+
+| method   | parameters | request body |
+| -------- | ---------- | ------------ |
+| `list()` |            |              |
+
+### `products`
+
+| method   | parameters  | request body |
+| -------- | ----------- | ------------ |
+| `list()` | tags        |              |
+| `get()`  | productName |              |
+
+### `domains`
+
+| method       | parameters | request body                                                |
+| ------------ | ---------- | ----------------------------------------------------------- |
+| `list()`     | tags       |                                                             |
+| `get()`      | domainName |                                                             |
+| `register()` |            | { domainName, contacts, nameservers, dnsEntries }           |
+| `transfer()` |            | { authCode, domainName, contacts, nameservers, dnsEntries } |
+| `update()`   | domainName | { domain }                                                  |
+| `cancel()`   | domainName | { endTime }                                                 |
+
+### `domains.branding`
+
+| method     | parameters | request body |
+| ---------- | ---------- | ------------ |
+| `get()`    | domainName |              |
+| `update()` | domainName | { domain }   |
+
+### `domains.contacts`
+
+| method     | parameters | request body |
+| ---------- | ---------- | ------------ |
+| `get()`    | domainName |              |
+| `update()` | domainName | { contacts } |
+
+### `domains.dns`
+
+| method        | parameters | request body   |
+| ------------- | ---------- | -------------- |
+| `list()`      | domainName |                |
+| `add()`       | domainName | { dnsEntry }   |
+| `update()`    | domainName | { dnsEntry }   |
+| `updateAll()` | domainName | { dnsEntries } |
+| `delete()`    | domainName | { dnsEntry }   |
+
+### `domains.dnsSec`
+
+| method     | parameters | request body      |
+| ---------- | ---------- | ----------------- |
+| `list()`   | domainName |                   |
+| `update()` | domainName | { dnsSecEntries } |
+
+### `domains.nameservers`
+
+| method     | parameters | request body    |
+| ---------- | ---------- | --------------- |
+| `list()`   | domainName |                 |
+| `update()` | domainName | { nameservers } |
+
+### `domains.actions`
+
+| method     | parameters | request body                                    |
+| ---------- | ---------- | ----------------------------------------------- |
+| `get()`    | domainName |                                                 |
+| `retry()`  | domainName | { authCode, dnsEntries, nameservers, contacts } |
+| `cancel()` | domainName | { nameservers }                                 |
+
 ## Dependencies
 
 The only external dependency is `node-fetch`. The `crypto` class, native to node, is used as well.

@@ -113,8 +113,6 @@ await api.query("https://api.transip.nl/v6/domains?page=1&pageSize=0");
 
 A "request body"-object must always be the last parameter of a method. For contents of the request body, [see the API docs](ttps://api.transip.nl/rest/docs.html).
 
-> WIP!
-
 ### `availabilityZones`
 
 | method   | parameters | request body |
@@ -139,21 +137,21 @@ A "request body"-object must always be the last parameter of a method. For conte
 | `update()`   | domainName | { domain }                                                  |
 | `cancel()`   | domainName | { endTime }                                                 |
 
-### `domains.branding`
+#### `domains.branding`
 
 | method     | parameters | request body |
 | ---------- | ---------- | ------------ |
 | `get()`    | domainName |              |
 | `update()` | domainName | { domain }   |
 
-### `domains.contacts`
+#### `domains.contacts`
 
 | method     | parameters | request body |
 | ---------- | ---------- | ------------ |
 | `get()`    | domainName |              |
 | `update()` | domainName | { contacts } |
 
-### `domains.dns`
+#### `domains.dns`
 
 | method        | parameters | request body   |
 | ------------- | ---------- | -------------- |
@@ -163,27 +161,60 @@ A "request body"-object must always be the last parameter of a method. For conte
 | `updateAll()` | domainName | { dnsEntries } |
 | `delete()`    | domainName | { dnsEntry }   |
 
-### `domains.dnsSec`
+#### `domains.dnsSec`
 
 | method     | parameters | request body      |
 | ---------- | ---------- | ----------------- |
 | `list()`   | domainName |                   |
 | `update()` | domainName | { dnsSecEntries } |
 
-### `domains.nameservers`
+#### `domains.nameservers`
 
 | method     | parameters | request body    |
 | ---------- | ---------- | --------------- |
 | `list()`   | domainName |                 |
 | `update()` | domainName | { nameservers } |
 
-### `domains.actions`
+#### `domains.actions`
 
 | method     | parameters | request body                                    |
 | ---------- | ---------- | ----------------------------------------------- |
 | `get()`    | domainName |                                                 |
 | `retry()`  | domainName | { authCode, dnsEntries, nameservers, contacts } |
-| `cancel()` | domainName | { nameservers }                                 |
+| `cancel()` | domainName |                                                 |
+
+#### `domains.ssl`
+
+| method   | parameters                | request body |
+| -------- | ------------------------- | ------------ |
+| `list()` | domainName                |              |
+| `get()`  | domainName, certificateId |              |
+
+#### `domains.whois`
+
+| method  | parameters | request body |
+| ------- | ---------- | ------------ |
+| `get()` | domainName |              |
+
+#### `domains.whitelabel`
+
+| method    | parameters | request body |
+| --------- | ---------- | ------------ |
+| `order()` | domainName |              |
+
+#### `domains.domainAvailability`
+
+| method   | parameters | request body    |
+| -------- | ---------- | --------------- |
+| `list()` |            | { domainNames } |
+| `get()`  | domainName |                 |
+
+#### `domains.tlds`
+
+| method   | parameters | request body |
+| -------- | ---------- | ------------ |
+| `list()` |            |              |
+| `get()`  | tld        |              |
 
 ## Dependencies
 

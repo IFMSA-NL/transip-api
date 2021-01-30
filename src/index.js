@@ -97,14 +97,17 @@ class TransIP {
 
   products = {
     list: async () => await this.#req("products"),
-    get: async (productName) => await this.#req(`products/${productName}/elements`),
+    get: async (productName) =>
+      await this.#req(`products/${productName}/elements`),
   };
 
   availabilityZones = {
     list: async () => await this.#req("availability-zones"),
-  }
+  };
 
-  test() {return await this.#req("api-test")};
+  async test() {
+    return await this.#req("api-test");
+  }
 
   // Domains
   domains = {

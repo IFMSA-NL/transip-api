@@ -1,6 +1,6 @@
 # TransIP API for Node
 
-[![npm](https://img.shields.io/npm/v/github-buttons)](https://www.npmjs.com/github-buttons)
+[![npm](https://img.shields.io/npm/v/github-buttons)](https://www.npmjs.com/transip-api)
 
 This library intends to be an easy wrapper for the full TransIP API, as well as the Authentication class, originally implemented in PHP.
 The currently supported version is v6.6.

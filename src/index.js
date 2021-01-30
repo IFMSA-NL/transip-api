@@ -214,24 +214,20 @@ class TransIP {
     whois: {
       get: async (domainName) => await this.#req(`domains/${domainName}/whois`),
     },
-    whitelabel: this.whitelabel,
-    domainAvailability: this.domainAvailability,
-    tlds: this.tlds,
-  };
-
-  // Some domain-related stuff
-  whitelabel = {
-    order: async () => await this.#req(`whitelabel`, "POST", { billing: true }),
-  };
-  domainAvailability = {
-    get: async (domainName) =>
-      await this.#req(`domain-availability/${domainName}`),
-    list: async ({ domainNames }) =>
-      await this.#req(`domain-availability/${domainName}`),
-  };
-  tlds = {
-    list: async () => await this.#req(`tlds`),
-    get: async (tld) => await this.#req(`tlds/${tld}`),
+    whitelabel: {
+      order: async () =>
+        await this.#req(`whitelabel`, "POST", { billing: true }),
+    },
+    domainAvailability: {
+      get: async (domainName) =>
+        await this.#req(`domain-availability/${domainName}`),
+      list: async ({ domainNames }) =>
+        await this.#req(`domain-availability/${domainName}`),
+    },
+    tlds: {
+      list: async () => await this.#req(`tlds`),
+      get: async (tld) => await this.#req(`tlds/${tld}`),
+    },
   };
 
   // VPS
@@ -286,7 +282,7 @@ class TransIP {
       }),
     cancel: async (vpsName, { endTime = "end" }) =>
       await this.#req(`vps/${vpsName}`, "DELETE", { body: { endTime } }),
-    usageData: async (
+    usage: async (
       vpsName,
       { types = null, dateTimeStart = null, dateTimeEnd = null }
     ) =>

@@ -283,7 +283,152 @@ A "request body"-object must always be the last parameter of a method. For conte
 
 > Please note: to avoid clashes in variable name, the request body of `updateReverseDns()` uses `ipAddressOptions` instead of `ipAddress`!
 
-> WIP!
+#### `vps.snapshots`
+
+| method     | parameters            | request body           |
+| ---------- | --------------------- | ---------------------- |
+| `list()`   | vpsName               |                        |
+| `get()`    | vpsName, snapshotName |                        |
+| `create()` | vpsName               |                        |
+| `revert()` | vpsName, snapshotName | { destinationVpsName } |
+| `delete()` | vpsName, snapshotName |                        |
+
+#### `vps.backups`
+
+| method      | parameters        | request body    |
+| ----------- | ----------------- | --------------- |
+| `list()`    | vpsName           |                 |
+| `revert()`  | vpsName, backupId |                 |
+| `convert()` | vpsName, backupId | { description } |
+
+#### `vps.traffic`
+
+| method  | parameters | request body |
+| ------- | ---------- | ------------ |
+| `all()` |            |              |
+| `get()` | vpsName    |              |
+
+#### `vps.firewall`
+
+| method     | parameters | request body    |
+| ---------- | ---------- | --------------- |
+| `list()`   | vpsName    |                 |
+| `update()` | vpsName    | { vpsFirewall } |
+
+#### `vps.privateNetworks`
+
+| method     | parameters         | request body       |
+| ---------- | ------------------ | ------------------ |
+| `list()`   | vpsName            |                    |
+| `get()`    | privateNetworkName |                    |
+| `order()`  |                    | { description }    |
+| `update()` | privateNetworkName | { privateNetwork } |
+| `attach()` | privateNetworkName | { vpsName }        |
+| `detach()` | vpsName            | { vpsName }        |
+| `cancel()` | privateNetworkName | { endTime }        |
+
+#### `vps.bigStorage`
+
+| method      | parameters     | request body                                                     |
+| ----------- | -------------- | ---------------------------------------------------------------- |
+| `list()`    | vpsName        |                                                                  |
+| `get()`     | bigStorageName |                                                                  |
+| `order()`   |                | { size, offsiteBackups, availabilityZone, vpsName, description } |
+| `upgrade()` |                | { bigStorageName, size, offsiteBackups }                         |
+| `update()`  | bigStorageName | { bigStorage }                                                   |
+| `cancel()`  | bigStorageName | { endTime }                                                      |
+| `usage()`   | bigStorageName | { dateTimeStart, dateTimeEnd }                                   |
+
+##### `vps.bigStorage.backups`
+
+| method     | parameters               | request body |
+| ---------- | ------------------------ | ------------ |
+| `list()`   | bigStorageName           |              |
+| `revert()` | bigStorageName, backupId |              |
+
+#### `vps.mailService`
+
+| method                 | parameters | request body    |
+| ---------------------- | ---------- | --------------- |
+| `get()`                |            |                 |
+| `regeneratePassword()` |            |                 |
+| `addDnsEntries()`      |            | { domainNames } |
+
+#### `vps.monitorContacts`
+
+| method     | parameters | request body               |
+| ---------- | ---------- | -------------------------- |
+| `list()`   |            |                            |
+| `create()` |            | { name, telephone, email } |
+| `update()` | contactId  | { contact }                |
+| `delete()` | contactId  |                            |
+
+#### `vps.tcpMonitors`
+
+| method     | parameters         | request body   |
+| ---------- | ------------------ | -------------- |
+| `list()`   |                    |                |
+| `create()` | vpsName            | { tcpMonitor } |
+| `update()` | vpsName, ipAddress | { tcpMonitor } |
+| `delete()` | vpsName, ipAddress |                |
+
+### `haip`
+
+| method           | parameters | request body                 |
+| ---------------- | ---------- | ---------------------------- |
+| `list()`         |            |                              |
+| `get()`          | haipName   |                              |
+| `order()`        |            | { productName, description } |
+| `update()`       | haipName   | { haip }                     |
+| `cancel()`       | haipName   | { endTime }                  |
+| `statusReport()` | haipName   |                              |
+
+#### `haip.certificates`
+
+| method             | parameters              | request body         |
+| ------------------ | ----------------------- | -------------------- |
+| `list()`           | haipName                |                      |
+| `add()`            | haipName                | { sslCertificateId } |
+| `addLetsEncrypt()` | haipName                | { commonName }       |
+| `detach()`         | haipName, certificateId |                      |
+
+#### `haip.ipAddresses`
+
+| method     | parameters | request body    |
+| ---------- | ---------- | --------------- |
+| `list()`   | haipName   |                 |
+| `set()`    | haipName   | { ipAddresses } |
+| `detach()` | haipName   |                 |
+
+#### `haip.portConfigs`
+
+| method     | parameters                    | request body                                            |
+| ---------- | ----------------------------- | ------------------------------------------------------- |
+| `list()`   | haipName                      |                                                         |
+| `get()`    | haipName, portConfigurationId |                                                         |
+| `create()` | haipName                      | { name, sourcePort, targetPort, mode, endpointSslMode } |
+| `update()` | haipName, portConfigurationId | { portConfiguration }                                   |
+| `delete()` | haipName, portConfigurationId |                                                         |
+
+### `colocations`
+
+| method          | parameters     | request body    |
+| --------------- | -------------- | --------------- |
+| `list()`        |                |                 |
+| `get()`         | colocationName |                 |
+| `remoteHands()` | colocationName | { remoteHands } |
+
+#### `colocations.ipAddresses`
+
+| method            | parameters                | request body              |
+| ----------------- | ------------------------- | ------------------------- |
+| `list()`          | colocationName            |                           |
+| `get()`           | colocationName, ipAddress |                           |
+| `create()`        | colocationName            | { ipaddress, reverseDns } |
+| `setReverseDns()` | colocationName, ipAddress | { ipAddressOptions }      |
+| `delete()`        | colocationName, ipAddress |                           |
+
+> Please note: to avoid clashes in variable name, the request body of `setReverseDns()` uses `ipAddressOptions` instead of `ipAddress`!
 
 ## Dependencies
 

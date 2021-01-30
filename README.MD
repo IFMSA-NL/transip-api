@@ -109,6 +109,6 @@ The TransIP API supports pagination, but this wrapper does not implement this by
 await api.query("https://api.transip.nl/v6/domains?page=1&pageSize=0");
 ```
 
-## Dependemcies
+## Dependencies
 
 The only external dependency is `node-fetch`. The `crypto` class, native to node, is used as well.

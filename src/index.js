@@ -222,7 +222,9 @@ class TransIP {
       get: async (domainName) =>
         await this.#req(`domain-availability/${domainName}`),
       list: async ({ domainNames }) =>
-        await this.#req(`domain-availability/${domainName}`),
+        await this.#req(`domain-availability/${domainName}`, "GET", {
+          body: { domainNames },
+        }),
     },
     tlds: {
       list: async () => await this.#req(`tlds`),

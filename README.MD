@@ -11,8 +11,14 @@ The documentation for the API itself can be found at [api.transip.nl](https://ap
 
 ## Usage
 
+Install:
+
+```sh
+npm i transip-api
+```
+
 ```js
-const TransIP = require("transip");
+const TransIP = require("transip-api");
 
 const api = new TransIP();
 ```
@@ -27,8 +33,8 @@ The structure of the [API docs provided by TransIP](https://api.transip.nl/rest/
 There are a few exceptions:
 
 - `General` is split up: `products.list()`, `products.get()`, `availabilityZones.list()`, `test()`.
-- `Domains` > `Domains` > _ is shortened to `api.domains._()`;
-- `VPS` > `VPS` > _ is shortened to `api.vps._()`;
+- `Domains` > `Domains` > `*` is shortened to `api.domains.*()`;
+- `VPS` > `VPS` > `*` is shortened to `api.vps.*()`;
 - The same for `HA-IP` (`haip.*()`);
 - and`Colocations` (`colocations.*()`);
 

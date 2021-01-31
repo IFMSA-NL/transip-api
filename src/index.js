@@ -24,8 +24,9 @@ class TransIP {
   async auth(options, key) {
     if (options && typeof options === "string") {
       this.#auth = options;
+    } else {
+      this.#auth = await createToken(options, key);
     }
-    this.#auth = await createToken(options, key);
     return this.#auth;
   }
 

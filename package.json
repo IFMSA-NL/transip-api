@@ -19,6 +19,9 @@
   ],
   "author": "IFMSA-NL",
   "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "core-js": "^3.8.3",

@@ -38,11 +38,9 @@ class TransIP {
     this.#testMode = !!bool;
   }
 
-  async #req(
-    route,
-    method = "GET",
-    { billing = false, params, headers, body }
-  ) {
+  async #req(route, method = "GET", options = {}) {
+    const defaultValues = { billing: false, params: null, headers: null, body: null };
+    const { billing, params, headers, body } = { ...defaultValues, ...options };
     if (billing && !this.#allowBilling) {
       throw new Error(
         "The action you requested would change your invoice. 'allowBilling' must be enabled to do so."
@@ -64,10 +62,11 @@ class TransIP {
     const URL = `${this.#BASE_URL}/${route}${
       params ? this.#createSearchParams(params) : ""
     }`;
+    const parsedBody = body ? JSON.stringify(removeEmptyFromObj(body)) : null;
     const response = await fetch(URL, {
       method: method,
       headers: { ...defaultHeaders, ...headers },
-      body: JSON.stringify(removeEmptyFromObj(body)) || null,
+      body: parsedBody,
     });
     return await response.json();
   }

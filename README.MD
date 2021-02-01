@@ -5,6 +5,8 @@
 This library intends to be an easy wrapper for the full TransIP API, as well as the Authentication class, originally implemented in PHP.
 The currently supported version is v6.6.
 
+Requires Node 14 or higher.
+
 The documentation for the API itself can be found at [api.transip.nl](https://api.transip.nl/rest/docs.html).
 
 > This library is not supported by or affilated with TransIP in any way

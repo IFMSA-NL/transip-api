@@ -1,6 +1,6 @@
 {
   "name": "transip-api",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "A Node.js wrapper for the TransIP API and authentication class",
   "keywords": [
     "transip",

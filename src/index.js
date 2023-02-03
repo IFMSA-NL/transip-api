@@ -1,5 +1,5 @@
-const fetch = require("node-fetch");
-const createToken = require("./auth");
+import fetch from "node-fetch";
+import createToken from "./auth";
 
 function removeEmptyFromObj(obj) {
   return Object.fromEntries(
@@ -39,7 +39,12 @@ class TransIP {
   }
 
   async #req(route, method = "GET", options = {}) {
-    const defaultValues = { billing: false, params: null, headers: null, body: null };
+    const defaultValues = {
+      billing: false,
+      params: {},
+      headers: null,
+      body: null,
+    };
     const { billing, params, headers, body } = { ...defaultValues, ...options };
     if (billing && !this.#allowBilling) {
       throw new Error(
@@ -47,11 +52,7 @@ class TransIP {
       );
     }
     if (this.#testMode) {
-      if (params) {
-        params.test = 1;
-      } else {
-        params = { test: 1 };
-      }
+      params.test = 1;
     }
     const defaultHeaders = this.#auth
       ? {
@@ -620,4 +621,4 @@ class TransIP {
   };
 }
 
-module.exports = TransIP;
+export default TransIP;

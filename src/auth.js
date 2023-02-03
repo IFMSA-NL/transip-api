@@ -1,8 +1,8 @@
-const crypto = require("crypto");
-const fetch = require("node-fetch");
+import { randomBytes } from "node:crypto";
+import fetch from "node-fetch";
 
 const createNonce = () => {
-  return crypto.randomBytes(16).toString("hex");
+  return randomBytes(16).toString("hex");
 };
 
 const reformKey = (key) => {
@@ -14,7 +14,8 @@ const reformKey = (key) => {
 
 const checkAndFixKey = (key) => {
   const INVALID_KEY = "Invalid key provided";
-  const regex = /-----BEGIN (RSA )?PRIVATE KEY-----(.*)-----END (RSA )?PRIVATE KEY-----/is;
+  const regex =
+    /-----BEGIN (RSA )?PRIVATE KEY-----(.*)-----END (RSA )?PRIVATE KEY-----/is;
   if (!regex.test(key)) {
     throw new Error(INVALID_KEY);
   }
@@ -85,4 +86,4 @@ const createToken = async (options, key) => {
   return parsed.token;
 };
 
-module.exports = createToken;
+export default createToken;

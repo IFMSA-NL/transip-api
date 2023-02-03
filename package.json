@@ -1,39 +1,35 @@
 {
   "name": "transip-api",
-  "version": "1.4.3",
+  "version": "2.0.0",
+  "author": "IFMSA-NL",
   "description": "A Node.js wrapper for the TransIP API and authentication class",
+  "license": "MIT",
   "keywords": [
     "transip",
     "api"
   ],
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/IFMSA-NL/transip-api.git"
   },
   "scripts": {
-    "build": "babel src --out-dir dist"
+    "prebuild": "rimraf dist",
+    "build": "rollup -c"
   },
   "main": "dist/index.js",
   "files": [
     "/dist"
   ],
-  "author": "IFMSA-NL",
-  "license": "MIT",
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
-  "dependencies": {
-    "@babel/runtime": "^7.12.5",
-    "core-js": "^3.8.3",
-    "node-fetch": "^2.6.1"
+  "peerDependencies": {
+    "node-fetch": "^3.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-proposal-private-methods": "^7.12.1",
-    "@babel/plugin-transform-runtime": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "babel-preset-minify": "^0.5.1"
+    "rimraf": "^4.1.2",
+    "rollup": "^3.12.1",
+    "rollup-plugin-swc3": "^0.8.0"
   }
 }

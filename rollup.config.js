@@ -1,17 +1,17 @@
 import { swc } from "rollup-plugin-swc3";
 
 const config = {
-  input: "src/index.js",
+  input: "src/index.mjs",
   output: {
     dir: "dist",
     format: "esm",
   },
-  external: ["node:crypto", "node-fetch"],
+  external: ["node:crypto"],
   plugins: [
     swc({
       minify: true,
       env: {
-        targets: "node >= 16",
+        targets: "node >= 18",
       },
     }),
   ],

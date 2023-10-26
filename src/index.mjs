@@ -1,5 +1,4 @@
-import fetch from "node-fetch";
-import createToken from "./auth";
+import createToken from "./auth.mjs";
 
 function removeEmptyFromObj(obj) {
   return Object.fromEntries(

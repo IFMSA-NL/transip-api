@@ -6,6 +6,7 @@ This library intends to be an easy wrapper for the full TransIP API, as well as 
 The currently supported version is v6.6.
 
 Since v2, this module requires Node 14 or higher and is ESM only.
+Since v3, this modules requires Node 18 or higher.
 
 The documentation for the API itself can be found at [api.transip.nl](https://api.transip.nl/rest/docs.html).
 
@@ -444,7 +445,3 @@ A "request body"-object must always be the last parameter of a method. For conte
 | `delete()`        | colocationName, ipAddress |                           |
 
 > Please note: to avoid clashes in variable name, the request body of `setReverseDns()` uses `ipAddressOptions` instead of `ipAddress`!
-
-## Dependencies
-
-The only external dependency is `node-fetch`. The `crypto` class, native to node, is used as well.

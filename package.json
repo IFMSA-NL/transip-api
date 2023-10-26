@@ -1,6 +1,6 @@
 {
   "name": "transip-api",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "author": "IFMSA-NL",
   "description": "A Node.js wrapper for the TransIP API and authentication class",
   "license": "MIT",
@@ -22,14 +22,11 @@
     "/dist"
   ],
   "engines": {
-    "node": ">=16"
-  },
-  "peerDependencies": {
-    "node-fetch": "^3.3.0"
+    "node": ">=18"
   },
   "devDependencies": {
-    "rimraf": "^4.1.2",
-    "rollup": "^3.12.1",
-    "rollup-plugin-swc3": "^0.8.0"
+    "rimraf": "^5.0.5",
+    "rollup": "^4.1.4",
+    "rollup-plugin-swc3": "^0.10.3"
   }
 }

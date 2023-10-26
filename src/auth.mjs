@@ -1,5 +1,4 @@
 import { randomBytes } from "node:crypto";
-import fetch from "node-fetch";
 
 const createNonce = () => {
   return randomBytes(16).toString("hex");
